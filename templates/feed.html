@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+
+<!-- =======================
+     CREATE POST
+======================= -->
+<div class="card post-box">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="content" placeholder="What's on your mind?"></textarea>
+        <input type="file" name="image">
+        <button type="submit">Post</button>
+    </form>
+</div>
+
+<!-- =======================
+     POSTS FEED
+======================= -->
+{% for post in posts %}
+<div class="card">
+
+    <!-- POST HEADER -->
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+        <!-- AVATAR -->
+        <div style="
+            width:40px;
+            height:40px;
+            border-radius:50%;
+            background:#1877f2;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:bold;
+            font-size:16px;
+        ">
+            {{ post.user.username|first|upper }}
+        </div>
+
+        <!-- USERNAME + TIME -->
+        <div>
+            <h4 style="margin:0;">{{ post.user.username }}</h4>
+            <small style="color:#65676b;">
+                {{ post.created_at|naturaltime }}
+            </small>
+        </div>
+    </div>
+
+    <!-- POST CONTENT -->
+    <p>{{ post.content }}</p>
+
+    <!-- POST IMAGE -->
+    {% if post.image %}
+    <div class="post-image-box">
+        <img src="{{ post.image.url }}" class="post-image">
+    </div>
+    {% endif %}
+
+    <!-- POST ACTIONS -->
+    <div class="actions">
+        <a href="/like/{{ post.id }}/">
+            👍 Like ({{ post.like_set.count }})
+        </a>
+    </div>
+
+    <!-- COMMENT FORM -->
+    <form method="POST" action="/comment/{{ post.id }}/">
+        {% csrf_token %}
+        <input type="text" name="comment" placeholder="Write a comment...">
+    </form>
+
+    <!-- COMMENT COUNT -->
+    <small style="color:#65676b;">
+        {{ post.comment_set.count }} comments
+    </small>
+
+</div>
+{% endfor %}
+
+{% endblock %}

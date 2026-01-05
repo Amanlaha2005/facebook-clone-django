@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FaceBookClone</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- ======================
+     NAVBAR
+====================== -->
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="/feed/" class="logo">FaceBookClone</a>
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <form action="/search/" method="get" style="display:flex;gap:6px;">
+    <input type="text" name="q" placeholder="Search users"
+        style="padding:6px;border-radius:6px;border:1px solid #ccc;">
+    <button type="submit">🔍</button>
+</form>
+
+    <div class="nav-center">
+        
+        <a href="/feed/">🏠 Feed</a>
+        <a href="/profile/{{ request.user.username }}/">👤 Profile</a>
+        <a href="/edit-profile/">✏️ Edit</a>
+        <a href="/notifications/">
+    <a href="/notifications/">
+    🔔 Notifications
+    {% if unread_notifications > 0 %}
+        <span style="
+            background:red;
+            color:white;
+            border-radius:50%;
+            padding:2px 6px;
+            font-size:12px;
+        ">
+            {{ unread_notifications }}
+        </span>
+    {% endif %}
+</a>
+
+    </div>
+
+    <div class="nav-right">
+        <a href="/logout/">🚪 Logout</a>
+    </div>
+    {% endif %}
+</nav>
+
+<!-- ======================
+     PAGE CONTENT
+====================== -->
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

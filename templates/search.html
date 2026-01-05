@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Search Results</h2>
+
+{% if query %}
+    <p>Results for "<strong>{{ query }}</strong>"</p>
+{% endif %}
+
+{% for user in users %}
+<div class="card" style="display:flex;align-items:center;gap:15px;">
+    <div style="
+        width:45px;
+        height:45px;
+        border-radius:50%;
+        background:#1877f2;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:bold;
+    ">
+        {{ user.username|first|upper }}
+    </div>
+
+    <div>
+        <a href="/profile/{{ user.username }}/">
+            <strong>{{ user.username }}</strong>
+        </a>
+    </div>
+</div>
+{% empty %}
+<p>No users found</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-box">
+    <h2>Login</h2>
+    <form method="POST">{% csrf_token %}
+        <input name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button>Login</button>
+    </form>
+    <p><a href="/register/">Create Account</a></p>
+</div>
+{% endblock %}

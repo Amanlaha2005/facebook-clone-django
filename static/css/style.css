@@ -1,0 +1,258 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+    background-color: #f0f2f5;
+    color: #050505;
+}
+
+/* =========================
+   NAVBAR (FINAL)
+========================= */
+.navbar {
+    background: #1877f2;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card {
+    background: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+.card.unread {
+    background: #eef3ff;
+    border-left: 4px solid #1877f2;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    font-size: 18px;
+}
+
+.nav-center {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-right {
+    display: flex;
+}
+
+.actions a {
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.actions a:hover {
+    background: #e4e6eb;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+/* =========================
+   CARD (POST / FORM)
+========================= */
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   POST CREATE BOX
+========================= */
+.post-box textarea {
+    width: 100%;
+    min-height: 80px;
+    border-radius: 6px;
+    padding: 10px;
+    border: 1px solid #ccd0d5;
+    resize: none;
+    font-size: 14px;
+}
+
+.post-box input[type="file"] {
+    margin-top: 10px;
+}
+
+.post-box button {
+    background: #1877f2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.post-box button:hover {
+    background: #145dbf;
+}
+
+/* =========================
+   POST HEADER (USERNAME)
+========================= */
+.card h4 {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+/* =========================
+   POST CONTENT
+========================= */
+.card p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* =========================
+   POST IMAGE CONTAINER (FIX)
+========================= */
+.post-image-box {
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;     /* KEY FIX */
+    border-radius: 6px;
+    margin-top: 10px;
+    background: #f0f2f5;
+}
+
+/* =========================
+   POST IMAGE
+========================= */
+.post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* Facebook-style crop */
+}
+
+/* =========================
+   POST ACTIONS
+========================= */
+.actions {
+    margin-top: 10px;
+}
+
+.actions a {
+    text-decoration: none;
+    color: #1877f2;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   COMMENT INPUT
+========================= */
+.card form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 20px;
+    border: 1px solid #ccd0d5;
+    font-size: 13px;
+}
+
+/* =========================
+   LOGIN / REGISTER FORM
+========================= */
+.form-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 60px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccd0d5;
+    font-size: 14px;
+}
+
+.form-box button {
+    width: 100%;
+    padding: 12px;
+    background: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-box button:hover {
+    background: #145dbf;
+}
+
+.form-box p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-box a {
+    color: #1877f2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+    .container {
+        margin: 15px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

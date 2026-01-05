@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card" style="text-align:center;">
+    <img src="{{ profile.profile_pic.url }}" width="120" style="border-radius:50%;">
+    <h2>{{ profile.user.username }}</h2>
+    <p>{{ profile.bio }}</p>
+
+    {% if profile.user == request.user %}
+        <a href="/edit-profile/">Edit Profile</a>
+    {% else %}
+        {% if is_friend %}
+            <p>Friends</p>
+        {% elif request_sent %}
+            <p>Request Sent</p>
+        {% else %}
+            <a href="/friend-request/{{ profile.user.username }}/">Add Friend</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+
+<h2>Notifications</h2>
+
+{% for note in notes %}
+<div class="card {% if not note.is_read %}unread{% endif %}">
+
+    <p>{{ note.message }}</p>
+    <small>{{ note.created_at|naturaltime }}</small>
+
+    {% if note.friend_request %}
+        <div style="margin-top:8px;">
+            <a href="/accept-request/{{ note.friend_request.id }}/">✅ Accept</a>
+            <a href="/reject-request/{{ note.friend_request.id }}/">❌ Reject</a>
+        </div>
+    {% endif %}
+
+    <div style="margin-top:6px;">
+        <a href="/delete-notification/{{ note.id }}/">🗑 Delete</a>
+    </div>
+
+</div>
+{% empty %}
+<p>No notifications</p>
+{% endfor %}
+
+{% endblock %}
